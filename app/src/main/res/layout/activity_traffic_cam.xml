@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- THE REAL LIVE STREAM WEBVIEW -->
+    <WebView
+        android:id="@+id/webViewLiveTraffic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black" />
+
+    <!-- AI DETECTION BOXES CONTAINER -->
+    <FrameLayout
+        android:id="@+id/aiOverlayContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- SCAN LINE EFFECT -->
+    <View
+        android:id="@+id/viewScanLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#8000FF00"
+        android:layout_alignParentTop="true" />
+
+    <!-- SURVEILLANCE HUD OVERLAY -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Top Left: AI Engine Info -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#B0000000"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOLO v8 AI CORE - LIVE"
+                android:textColor="#00FF00"
+                android:textStyle="bold"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tvUnitId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UNIT: NRB-SURVEILLANCE-01"
+                android:textColor="#00FF00"
+                android:textSize="10sp" />
+            <TextView
+                android:id="@+id/tvGpsCoords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LAT: -1.2833 | LON: 36.8233"
+                android:textColor="#00FF00"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Top Right: Live Indicators -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:orientation="vertical"
+            android:background="#80000000"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/viewLiveDot"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/circle_primary"
+                    android:backgroundTint="#FF0000"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LIVE CITY VIEW"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLiveTimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <!-- Bottom Center: Traffic Analysis Data -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical"
+            android:background="#B0000000"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvTrafficFlow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONGESTION: LOW"
+                android:textColor="#00FF00"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <!-- Loading Progress -->
+        <ProgressBar
+            android:id="@+id/pbLoadingCam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@android:color/white" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCloseFeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="CLOSE STREAM"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textColor="@android:color/white"
+        app:strokeColor="@android:color/white"
+        app:cornerRadius="12dp" />
+
+</RelativeLayout>

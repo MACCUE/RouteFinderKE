@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Premium Kenyan Route Theme -->
+    <color name="primaryColor">#1B5E20</color> <!-- Deep Forest Green -->
+    <color name="primaryLightColor">#4C8C4A</color>
+    <color name="primaryDarkColor">#003308</color>
+
+    <color name="secondaryColor">#FFC107</color> <!-- Amber Gold -->
+    <color name="secondaryLightColor">#FFF350</color>
+    <color name="secondaryDarkColor">#C79100</color>
+
+    <!-- UI Surface Colors -->
+    <color name="backgroundColor">#F8F9FA</color>
+    <color name="surfaceColor">#FFFFFF</color>
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#757575</color>
+    <color name="accentLight">#E8F5E9</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/img_1"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RouteFinderKE"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:textColor="?android:attr/textColorPrimary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Version 1.0 (Advanced)"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="?android:attr/textColorSecondary"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/dividerVertical"
+            android:layout_marginVertical="24dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RouteFinderKE is your smart companion for navigating Kenyan public transport. We integrate real-time traffic, AR navigation, and seamless M-Pesa payments to make your daily commute safer and faster."
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="?android:attr/textColorPrimary"/>
+
+        <Button
+            android:id="@+id/btnShareApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invite Friends (Share App)"
+            android:layout_marginTop="32dp"
+            style="@style/Widget.Material3.Button.TonalButton"
+            app:icon="@android:drawable/ic_menu_share"/>
+
+        <Button
+            android:id="@+id/btnNightMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Toggle Night Mode"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.Material3.Button.TonalButton"/>
+
+    </LinearLayout>
+</ScrollView>

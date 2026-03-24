@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RouteFinderKE</string>
+    <string name="start_point">Mwanzo: </string>
+    <string name="destination">Unakoenda: </string>
+    <string name="major_stops">Vituo Vikuu:\n</string>
+    <string name="fare_range">Nauli: Ksh </string>
+    <string name="data_updated">Data imesasishwa</string>
+    <string name="route_finder">Tafuta Njia</string>
+    <string name="premium_tagline">Usafiri wa Kenya wa Kisasa</string>
+    <string name="new_route">NJIA MPYA</string>
+    <string name="title_activity_maps">Ramani</string>
+    <string name="voice_search_prompt">Sema unakoenda...</string>
+    <string name="sos_label">SOS YA HARAKA</string>
+    <string name="action_language">English</string>
+
+    <!-- Traffic Cam Swahili -->
+    <string name="live_traffic_feed">Picha ya Moja kwa Moja ya Trafiki</string>
+    <string name="connecting_feed">Inaunganisha...</string>
+    <string name="live_status_nairobi">MOJA KWA MOJA: Haile Selassie Ave</string>
+    <string name="close_feed">FUNGA</string>
+</resources>

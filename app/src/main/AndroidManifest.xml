@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.routefinderke">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <!-- Debugged: Added hardware camera feature to match the permission -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.ar" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/img_1"
+        android:label="RouteFinderKE"
+        android:roundIcon="@drawable/img_1"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RouteFinderKE"
+        android:usesCleartextTraffic="true">
+
+        <meta-data android:name="com.google.ar.core" android:value="optional" />
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_API_KEY_HERE" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".DetailActivity" android:exported="false" />
+        <activity android:name=".MapsActivity" android:exported="false" />
+        <activity android:name=".TrafficCamActivity" android:exported="false" />
+        <activity android:name=".AboutActivity" android:exported="false" />
+
+        <activity
+            android:name=".ARNavigationActivity"
+            android:label="AR Live View"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+
+    </application>
+</manifest>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/imgSplashBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/img_2"
+        android:scaleType="centerCrop"
+        android:alpha="0.3"
+        android:contentDescription="@string/app_name" />
+
+    <!-- Gradient Overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_overlay" />
+
+    <LinearLayout
+        android:id="@+id/splash_content_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <!-- Animating Smiling Cartoon -->
+        <ImageView
+            android:id="@+id/ivSmilingCartoon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/smiling_cartoon"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Smiling face" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/route_finder"
+            android:textSize="42sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Serving all 47 Counties of Kenya"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:indeterminateTint="@android:color/white" />
+
+</RelativeLayout>

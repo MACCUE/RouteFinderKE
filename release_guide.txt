@@ -1,0 +1,38 @@
+SIMULATED GOOGLE PLAY CONSOLE UPLOAD STEPS - Task 3 (iii)
+
+To simulate the upload for your exam, follow these steps in order:
+
+1. GENERATE THE BUNDLE:
+   • In Android Studio, go to: Build > Generate Signed Bundle / APK...
+   • Select 'Android App Bundle' and click Next.
+   • Create a new KeyStore (or use an existing one).
+   • Select 'release' destination folder.
+
+2. LOG IN TO CONSOLE (Simulated):
+   • Go to play.google.com/console
+   • Select 'Create App'.
+   • App Name: RouteFinderKE
+   • Default language: English (United Kingdom)
+   • App or Game: App
+   • Free or Paid: Free
+
+3. SET UP STORE LISTING:
+   • Open the 'store_listing.txt' file in this project.
+   • Copy/Paste the Short Description and Full Description.
+   • Upload Screenshots (Phone, 7-inch tablet, 10-inch tablet).
+   • Upload App Icon (512x512px) and Feature Graphic (1024x500px).
+
+4. UPLOAD APP BUNDLE:
+   • Go to Production > Create new release.
+   • Drag and drop the .aab file generated in Step 1.
+   • Release name: 1.0 (1)
+   • Release notes: "Initial release of RouteFinderKE for Nairobi commuters."
+
+5. REVIEW AND ROLLOUT:
+   • Click 'Save' then 'Review release'.
+   • Finally, click 'Start rollout to production' to finish the simulation.
+
+Checklist for Task 3:
+[X] Prepare for release (Done in Gradle/Manifest)
+[X] Prepare store listing content (Done in store_listing.txt)
+[X] Simulate upload to Google Play (Steps above)

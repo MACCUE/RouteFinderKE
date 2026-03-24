@@ -1,0 +1,30 @@
+STORE LISTING CONTENT - RouteFinderKE
+
+1. App Title:
+   RouteFinderKE
+
+2. Short Description:
+   Easily find Matatu routes, major stops, and fare ranges in Nairobi.
+
+3. Full Description:
+   RouteFinderKE is your essential travel companion for navigating Nairobi's public transport system.
+   Never get lost or overcharged again! Quickly look up Matatu route numbers, start points, destinations, and major stops across the city.
+
+   Features:
+   • Comprehensive Route Catalog: Access details for popular routes like 7C, 23, 105, 4W, 33B, and more.
+   • Detailed Route Info: View major stops/landmarks for every route to know exactly where to board or alight.
+   • Fare Estimates: Stay informed with estimated fare ranges to help you plan your daily commute budget.
+   • Material Design: Enjoy a clean, fast, and user-friendly interface designed for Kenyan commuters.
+   • Lightweight: Small app size that won't take up much space on your device.
+
+   Navigate Nairobi  with RouteFinderKE!
+
+4. Category:
+   Maps & Navigation / Travel & Local
+
+5. Contact Details:
+   Email: support@routefinderke.co.ke
+   Website: www.routefinderke.co.ke
+
+6. Tags:
+   Nairobi, Matatu, Routes, Kenya, Travel, Public Transport, Fare Finder

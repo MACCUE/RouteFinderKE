@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">RouteFinderKE</string>
+    <string name="start_point">Start Point: </string>
+    <string name="destination">Destination: </string>
+    <string name="major_stops">Major Stops:\n</string>
+    <string name="fare_range">Fare Range: Ksh </string>
+    <string name="data_updated">Data Updated Manually</string>
+    <string name="route_finder">RouteFinder</string>
+    <string name="premium_tagline">Premium Kenya Commute</string>
+    <string name="new_route">NEW ROUTE</string>
+    <string name="title_activity_maps">Map View</string>
+
+    <!-- Voice Search -->
+    <string name="voice_search_prompt">Say a county or destination...</string>
+
+    <!-- SOS Feature -->
+    <string name="sos_label">EMERGENCY SOS</string>
+    <string name="sos_msg_sent">SOS message prepared!</string>
+
+    <!-- Language Toggle -->
+    <string name="action_language">Kiswahili</string>
+
+    <!-- Detailed View Strings -->
+    <string name="open_map">OPEN NAVIGATION MAP</string>
+    <string name="fare_calculator">Smart Fare Calculator</string>
+    <string name="safe_journey">Safe Journey with RouteFinderKE</string>
+
+    <!-- Main View Strings -->
+    <string name="explore_kenya">Explore Kenya Routes</string>
+    <string name="find_route">Find routes in all 47 counties</string>
+    <string name="select_county">Select a County</string>
+
+    <!-- Traffic Cam Strings -->
+    <string name="live_traffic_feed">Live Traffic Feed</string>
+    <string name="connecting_feed">Connecting to Live Feed...</string>
+    <string name="live_status_nairobi">LIVE: Haile Selassie Ave Junction</string>
+    <string name="close_feed">CLOSE FEED</string>
+</resources>
