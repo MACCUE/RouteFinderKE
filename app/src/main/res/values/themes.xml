@@ -13,6 +13,9 @@
 
         <!-- Background and surface -->
         <item name="android:windowBackground">@color/backgroundColor</item>
+
+        <!-- Default to Light Mode (Force Light defaults) -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
     <style name="Theme.RouteFinderKE" parent="Base.Theme.RouteFinderKE" />

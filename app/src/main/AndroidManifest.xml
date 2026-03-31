@@ -17,7 +17,6 @@
         </intent>
     </queries>
 
-    <!-- Debugged: Added hardware camera feature to match the permission -->
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-feature android:name="android.hardware.camera.ar" android:required="false" />
 
@@ -43,6 +42,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".HomeActivity" android:exported="true" />
         <activity android:name=".MainActivity" android:exported="false" />
         <activity android:name=".DetailActivity" android:exported="false" />
         <activity android:name=".MapsActivity" android:exported="false" />

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
 /**
- * SplashActivity - Fixed black screen and improved animations! 🎬🚀
+ * SplashActivity - Now pointing to the professional HomeActivity landing page! 🎬🚀
  */
 public class SplashActivity extends AppCompatActivity {
 
@@ -21,25 +21,23 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // 1. Fix the black screen by loading the background safely
+        // 1. Load the background safely
         ImageView splashBg = findViewById(R.id.imgSplashBackground);
         if (splashBg != null) {
             Glide.with(this)
-                 .load(R.drawable.img_2) // Verified background
+                 .load(R.drawable.img_2)
                  .centerCrop()
                  .into(splashBg);
         }
 
-        // 2. Load and Animate img_4 (The Path Chooser)
+        // 2. Load and Animate smiling cartoon (The Path Chooser)
         ImageView smilingCartoon = findViewById(R.id.ivSmilingCartoon);
         if (smilingCartoon != null) {
-            // Standard load handles both PNG and GIF automatically
             Glide.with(this)
                  .load(R.drawable.img_4)
                  .placeholder(R.drawable.smiling_cartoon)
                  .into(smilingCartoon);
 
-            // Add a "Pulse" animation to make the static PNG feel like a GIF
             Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
             smilingCartoon.startAnimation(pulse);
         }
@@ -51,8 +49,9 @@ public class SplashActivity extends AppCompatActivity {
             logoContainer.startAnimation(fadeIn);
         }
 
+        // 4. TRANSITION TO HOME PAGE (HomeActivity)
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
         }, 4000);

@@ -199,4 +199,14 @@
         app:iconTint="@color/black"
         app:elevation="8dp" />
 
+    <!-- Siaya/Bondo Welcome Overlay -->
+    <ImageView
+        android:id="@+id/ivCountyWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:elevation="50dp"
+        android:background="@android:color/black" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

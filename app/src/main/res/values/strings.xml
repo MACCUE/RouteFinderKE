@@ -35,4 +35,25 @@
     <string name="connecting_feed">Connecting to Live Feed...</string>
     <string name="live_status_nairobi">LIVE: Haile Selassie Ave Junction</string>
     <string name="close_feed">CLOSE FEED</string>
+
+    <!-- DetailActivity Strings -->
+    <string name="detail_from">From: %1$s</string>
+    <string name="detail_to">To: %1$s</string>
+    <string name="detail_fare">Fare: Ksh %1$s</string>
+    <string name="payment_verified_msg">✅ PAYMENT VERIFIED\n\nYour seat on Route %1$s is reserved.\nShow this to the conductor.</string>
+
+    <!-- HomeActivity Strings -->
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="explore_essentials">Explore your travel essentials</string>
+    <string name="browse_routes">Browse Routes</string>
+    <string name="fuel_prices">Fuel Prices</string>
+    <string name="fare_history">Fare History</string>
+    <string name="offline_maps">Offline Maps</string>
+    <string name="share_trip">Share Trip</string>
+    <string name="emergency_sos">Emergency SOS</string>
+    <string name="sacco_ratings_title">SACCO Ratings &amp; Safety</string>
+    <string name="report_driving">Report Reckless Driving</string>
+    <string name="rate_sacco_desc">Rate your SACCO and report issues</string>
+    <string name="rate_btn">RATE</string>
+    <string name="live_traffic_alert">Live Traffic Alert</string>
 </resources>

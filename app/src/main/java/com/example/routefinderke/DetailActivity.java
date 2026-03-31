@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -43,16 +44,6 @@ import retrofit2.Response;
 public class DetailActivity extends AppCompatActivity {
 
     private Route route;
-    
-    // --- REAL WORLD SOLUTION: NGROK BACKEND URL ---
-    // Update this URL with the one given by Ngrok (e.g., https://random-words.ngrok-free.app)
-    private final String NGROK_URL = "https://your-ngrok-url.ngrok-free.app";
-
-    // Safaricom Credentials (If using direct connection, otherwise managed by backend)
-    private final String CONSUMER_KEY = "hNjsp4V2TCbnbtHvJIDejLEpL8yIEk9Lme8rwQzQm1BGPtEc";
-    private final String CONSUMER_SECRET = "ecaJPY1sckBCYEjP6OSsqAlW6ufJxtuBVjPybaYpEFixxB9NqU3AmEBYENA21jei";
-    private final String BUSINESS_SHORT_CODE = "174379"; 
-    private final String PASSKEY = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +80,9 @@ public class DetailActivity extends AppCompatActivity {
         TextView tvDest = findViewById(R.id.tvDetailDest);
         TextView tvFare = findViewById(R.id.tvDetailFare);
 
-        tvStart.setText("From: " + route.getStartPoint());
-        tvDest.setText("To: " + route.getDestination());
-        tvFare.setText("Fare: Ksh " + route.getFareRange());
+        tvStart.setText(getString(R.string.detail_from, route.getStartPoint()));
+        tvDest.setText(getString(R.string.detail_to, route.getDestination()));
+        tvFare.setText(getString(R.string.detail_fare, route.getFareRange()));
 
         // Buttons
         findViewById(R.id.btnViewOnMap).setOnClickListener(v -> openInGoogleMaps());
@@ -123,9 +114,6 @@ public class DetailActivity extends AppCompatActivity {
                 }).show();
     }
 
-    /**
-     * ADVANCED: Prompts the passenger for their phone number to initiate payment to driver
-     */
     private void showPhoneNumberPrompt() {
         EditText input = new EditText(this);
         input.setHint("e.g. 254712345678");
@@ -150,21 +138,17 @@ public class DetailActivity extends AppCompatActivity {
 
     private void performRealStkPush(String phoneNumber) {
         Toast.makeText(this, "Connecting to Safaricom Gateway...", Toast.LENGTH_SHORT).show();
-        
-        // This is where you connect to your Ngrok Backend or Safaricom directly
-        // For a Play Store app, hitting your Ngrok URL (Backend) is the secure way
-        Log.d("Mpesa", "Initiating push to: " + phoneNumber + " via " + NGROK_URL);
 
         MpesaService service = RetrofitClient.getMpesaService();
-        String keys = CONSUMER_KEY + ":" + CONSUMER_SECRET;
+        String consumerKey = BuildConfig.MPESA_CONSUMER_KEY;
+        String consumerSecret = BuildConfig.MPESA_CONSUMER_SECRET;
+        String keys = consumerKey + ":" + consumerSecret;
         String auth = "Basic " + Base64.encodeToString(keys.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
 
-        service.getAccessToken(auth).enqueue(new Callback<ResponseBody>() {
+        service.getAccessToken(auth).enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    // Success! Now send the actual STK Push
-                    // In a production backend, this token is handled server-side
                     sendActualStkPush(phoneNumber, service, "Bearer token_placeholder");
                 } else {
                     Toast.makeText(DetailActivity.this, "Authentication Failed. Use USSD Fallback.", Toast.LENGTH_LONG).show();
@@ -173,7 +157,7 @@ public class DetailActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(DetailActivity.this, "Network Error. Switch to Offline Mode.", Toast.LENGTH_SHORT).show();
                 showUSSDOfflineFallback();
             }
@@ -181,42 +165,46 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void sendActualStkPush(String phone, MpesaService service, String token) {
+        String businessShortCode = "174379";
+        String passkey = BuildConfig.MPESA_PASSKEY;
+        String ngrokUrl = "https://your-ngrok-url.ngrok-free.app";
+
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(new Date());
-        String password = Base64.encodeToString((BUSINESS_SHORT_CODE + PASSKEY + timestamp).getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
-        
-        // Using the driver's till number from the Route data
-        String driverTill = route.getPaymentTill() != null ? route.getPaymentTill() : BUSINESS_SHORT_CODE;
+        String password = Base64.encodeToString((businessShortCode + passkey + timestamp).getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
+
+        String driverTill = route.getPaymentTill() != null ? route.getPaymentTill() : businessShortCode;
 
         StkPushRequest request = new StkPushRequest(
-            "1", // Testing with 1 Shilling
-            phone, 
-            driverTill, 
-            password, 
-            timestamp, 
-            NGROK_URL + "/callback", // Your Ngrok callback URL
-            "Payment for Route " + route.getRouteNumber()
+                "1",
+                phone,
+                driverTill,
+                password,
+                timestamp,
+                ngrokUrl + "/callback",
+                "Payment for Route " + route.getRouteNumber()
         );
 
-        service.sendStkPush(token, request).enqueue(new Callback<ResponseBody>() {
+        service.sendStkPush(token, request).enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(DetailActivity.this, "STK Push Sent! Enter PIN on your phone.", Toast.LENGTH_LONG).show();
-                    new Handler(Looper.getMainLooper()).postDelayed(() -> showTicketDialog("M-Pesa"), 4000);
+                    new Handler(Looper.getMainLooper()).postDelayed(DetailActivity.this::showTicketDialog, 4000);
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Log.e("Mpesa", "Push failed", t);
             }
         });
     }
 
     private void showUSSDOfflineFallback() {
-        String driverTill = route.getPaymentTill() != null ? route.getPaymentTill() : "174379";
-        String ussd = "*334#"; 
-        
+        String businessShortCode = "174379";
+        String driverTill = route.getPaymentTill() != null ? route.getPaymentTill() : businessShortCode;
+        String ussd = "*334#";
+
         new AlertDialog.Builder(this)
                 .setTitle("Offline Mode Active 📡")
                 .setMessage("No data. Use M-Pesa USSD to pay manually:\n\nDriver Till: " + driverTill + "\nAmount: " + route.getFareRange())
@@ -234,7 +222,7 @@ public class DetailActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void showTicketDialog(String provider) {
+    private void showTicketDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -242,7 +230,7 @@ public class DetailActivity extends AppCompatActivity {
         layout.setPadding(50, 50, 50, 50);
 
         TextView successText = new TextView(this);
-        successText.setText("✅ PAYMENT VERIFIED\n\nYour seat on Route " + route.getRouteNumber() + " is reserved.\nShow this to the conductor.");
+        successText.setText(getString(R.string.payment_verified_msg, route.getRouteNumber()));
         successText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         successText.setTextSize(18);
         successText.setTextColor(ContextCompat.getColor(this, android.R.color.black));
