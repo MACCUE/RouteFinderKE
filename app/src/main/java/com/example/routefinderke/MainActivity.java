@@ -273,6 +273,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                 double offsetLng = (random.nextDouble() - 0.5) * 0.1;
                 allRoutes.add(new Route("HBY-" + String.format(Locale.US, "%02d", i+1), "Homa Bay Town", homabayPlaces[i], Collections.singletonList("County Center"), "50-200", R.drawable.img_1, "Homa Bay", -0.5273, 34.4571, -0.5273 + offsetLat, 34.4571 + offsetLng, "654321"));
             }
+            String[] kwalePlaces = {
+                    "Ukunda Township", "Diani Beach", "Kwale Town", "Lunga Lunga", "Kinango", "Msambweni","shimoni Jet", "Tiwi", "Matuga", "Vanga", "Samburu Kwale"
+            };
+            
 
             // --- MOMBASA NETWORK (20 ROUTES) ---
             addMombasaRoute("MSA-01", "Posta", "Bamburi Beach", Arrays.asList("Nyali", "Kengeleni"), -4.066, 39.666, -3.985, 39.712, "112233");
